@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Task detail
+{% endblock %}
+{% block h1 %}
+    Task detail
+{% endblock %}
+{% block article_content %}
+    <h4>
+        {{ object.name }}
+    </h4>
+    <span>Login : {{ object.login }}</span><br />
+    <span>Email : {{ object.email }}</span>
+    <h3>Tasks</h3>
+    <table>
+        {% for task in tasks_dev %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.importence }}</td>
+                <td>{{ task.project }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="well item{% if object.css_class %} {{ object.css_class }}{% endif %}">
+    <!-- editorial content for non-specific placeholders -->
+    <div class="img">
+        {% if object.image %}
+            <img class="img-responsive" alt="{{ object.image_caption|striptags }}" src="{{ object.image.url }}" />
+        {% endif %}
+        {% if object.image_caption %}<p class="caption">{{ object.image_caption|removetags:"p"|truncatewords:30 }}</p>
+        {% endif %}
+    </div>
+    <h3><a href="{{ object.website }}">{{ object.title }}</a></h3>
+    <h4>{{ object.subtitle }}</h4>
+    <div class="description">{{ object.description|safe }}</div>
+</div>

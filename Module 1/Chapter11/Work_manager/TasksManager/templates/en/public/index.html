@@ -1,0 +1,23 @@
+
+{% extends "base.html" %}
+{% block title_html %}
+    Chapter 11
+{% endblock %}
+{% block h1 %}
+    {{ bloc.super }} Chapter 11
+{% endblock %}
+{% block article_content %}
+    <a href="{% url "create_developer" %}">Create developer</a><br />
+    <a href="{% url "create_supervisor" %}">Create supervisor</a><br />
+    <a href="{% url "create_project" %}">Create project</a><br />
+    <a href="{% url "create_task" %}">Create task</a><br />
+    <a href="{% url "project_list" %}">Project list</a><br />
+    <a href="{% url "developer_list" %}">Developer list</a><br />
+    <a href="{% url "task_detail" "1" %}">Detail first task</a><br />
+    <a href="{% url "update_task" "1" %}">Update task</a><br />
+    <a href="{% url "update_task_time" "1" %}">Update task time</a><br />
+    <a href="{% url "task_delete" "2" %}">Delete second task</a><br />
+    <a href="{% url "task_list" %}">Task list</a><br />
+    <a href="{% url "public_connection" %}">Connection</a><br />
+    <a href="{% url "public_logout" %}">Logout</a><br />
+{% endblock %}

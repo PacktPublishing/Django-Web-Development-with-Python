@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+PROJECT_PATH=/home/myproject
+CRON_LOG_FILE=${PROJECT_PATH}/logs/cleanup.log
+
+echo "Cleaning up the database" > ${CRON_LOG_FILE}
+date >> ${CRON_LOG_FILE}
+
+cd ${PROJECT_PATH}
+. bin/activate
+cd project/myproject
+python manage.py cleanup --traceback >> ${CRON_LOG_FILE}  2>&1

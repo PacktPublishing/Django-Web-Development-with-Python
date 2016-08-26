@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load i18n cms_tags sekizai_tags menu_tags %}
+<html lang="{{ LANGUAGE_CODE }}"> 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock %}{% trans "My Website" %}</title>
+    <link rel="icon" href="{{ STATIC_URL }}site/img/favicon.ico" type="image/png" />
+    
+    {% block meta_tags %}{% endblock %} 
+    
+    {% render_block "css" %}
+    {% block base_stylesheet %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link href="{{ STATIC_URL }}site/css/style.css" rel="stylesheet" media="screen" type="text/css" />
+    {% endblock %}
+    {% block stylesheet %}{% endblock %}
+    
+    {% block base_js %}
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    {% endblock %}
+    {% block js %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %} {{ request.current_page.cssextension.body_css_class }}">
+    {% cms_toolbar %}
+    {% block page %}
+        <div class="wrapper">
+            <div id="header" class="clearfix container">
+                <h1>{% trans "My Website" %}</h1>
+                <nav class="navbar navbar-default" role="navigation">
+                    {% block header_navigation %}
+                        <ul class="nav navbar-nav">
+                            {% show_menu_below_id "start_page" 0 1 1 1 %}
+                        </ul>
+                    {% endblock %}
+                    {% block language_chooser %}
+                        <ul class="nav navbar-nav pull-right">
+                            {% language_chooser %}
+                        </ul>
+                    {% endblock %}
+                </nav>
+            </div>
+            <div id="content" class="clearfix container">
+                {% block content %}
+                {% endblock %}
+            </div>  
+            <div id="footer" class="clearfix container">
+                {% block footer_navigation %}
+                    <nav class="navbar navbar-default" role="navigation">
+                        <ul class="nav navbar-nav">
+                            {% show_menu_below_id "footer_navigation" 0 1 1 1 %}
+                        </ul>
+                    </nav>
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
+    {% block extrabody %}{% endblock %}
+    {% render_block "js" %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h2>{% trans "Objects liked by you" %}</h2>
+    {% if object_list %}
+        <ul>
+            {% for like in object_list %}
+                <li>{{ like.content_object }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {% trans "There are no objects liked by you." %}
+    {% endif %}
+{% endblock %}

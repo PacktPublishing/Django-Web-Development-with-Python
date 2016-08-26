@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{{ video.title }} <span class="badge">{{ video.label }}</span></h1>
+    <div>{{ video.embed_code|safe }}</div>
+    {% if video.get_thumbnail_url %}
+        <figure>
+            <img src="{{ video.get_thumbnail_url }}" alt="{{ video.title }}" />
+            <figcaption>{{ video.title }}</figcaption>
+        </figure>
+    {% endif %}
+    <div>
+        <h2>{% trans "Impressions" %}</h2>
+        <ul>
+            <li>{% trans "Desktop impressions" %}: {{ video.desktop_impressions }}</li>
+            <li>{% trans "Mobile impressions" %}: {{ video.mobile_impressions }}</li>
+            <li>{% trans "Total impressions" %}: {{ video.total_impressions }}</li>
+        </ul>
+    </div>
+{% endblock %}

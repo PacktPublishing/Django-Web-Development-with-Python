@@ -1,0 +1,39 @@
+{% block doctype %}<!DOCTYPE html>{% endblock %}
+{% load i18n %}
+<html lang="{{ LANGUAGE_CODE }}"> 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock %}{% trans "My Website" %}</title>
+    <link rel="icon" href="{{ STATIC_URL }}site/img/favicon.ico" type="image/png" />
+    
+    {% block meta_tags %}{% endblock %} 
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href="{{ STATIC_URL }}site/css/style.css" rel="stylesheet" media="screen" type="text/css" />
+    {% block stylesheet %}{% endblock %}
+    
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    {% block js %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+    {% block page %}
+        <div class="wrapper">
+            <div id="header" class="clearfix container">
+                <h1>{% trans "My Website" %}</h1>
+            </div>
+            <div id="content" class="clearfix container">
+                {% block content %}
+                {% endblock %}
+            </div>  
+            <div id="footer" class="clearfix container">
+            </div>
+        </div>
+    {% endblock %}
+    {% block extrabody %}{% endblock %}
+</body>
+</html>

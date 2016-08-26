@@ -1,0 +1,4 @@
+<div class="well">
+    {% block well_content %}{% endblock %}
+    {% if request.user.is_authenticated %}You are logged in.{% endif %}
+</div>

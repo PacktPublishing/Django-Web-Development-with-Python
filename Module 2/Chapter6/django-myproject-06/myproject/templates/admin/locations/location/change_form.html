@@ -1,0 +1,17 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_static admin_modify %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}site/css/locating.css" />
+{% endblock %}
+
+{% block field_sets %}
+    {% for fieldset in adminform %}
+        {% include "admin/includes/fieldset.html" %}
+    {% endfor %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?language=en"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}site/js/locating.js"></script>
+{% endblock %}

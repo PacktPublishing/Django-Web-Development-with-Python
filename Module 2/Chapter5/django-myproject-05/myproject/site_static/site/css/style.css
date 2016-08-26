@@ -1,0 +1,15 @@
+img.img-full-width {
+    width: 100%;
+}
+
+#map {
+    height: 300px;
+}
+
+.qq-upload-button {
+    width: 135px !important;
+}
+
+#footer {
+    height: 200px;
+}

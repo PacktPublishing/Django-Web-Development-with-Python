@@ -1,0 +1,5 @@
+Django==1.8.1
+django-crispy-forms
+django-mptt
+django-mptt-admin
+django-mptt-tree-editor

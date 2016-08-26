@@ -1,0 +1,123 @@
+{% extends "base_two_columns.html" %}
+{% load i18n utility_tags %}
+
+{% block sidebar %}
+<div class="filters panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseGenres">
+                    {% trans "Filter by Genre" %}
+                </a>
+            </h6>
+        </div>
+        <div id="collapseGenres" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="list-group">
+                    <a class="list-group-item{% if not facets.selected.genre %} active{% endif %}" href="{% modify_query "genre" "page" %}">{% trans "All" %}</a>
+                    {% for cat in facets.categories.genres %}
+                        <a class="list-group-item{% if facets.selected.genre == cat %} active{% endif %}" href="{% modify_query "page" genre=cat.pk %}">{{ cat }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseDirectors">
+                    {% trans "Filter by Director" %}
+                </a>
+            </h6>
+        </div>
+        <div id="collapseDirectors" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    <a class="list-group-item{% if not facets.selected.director %} active{% endif %}" href="{% modify_query "director" "page" %}">{% trans "All" %}</a>
+                    {% for cat in facets.categories.directors %}
+                        <a class="list-group-item{% if facets.selected.director == cat %} active{% endif %}" href="{% modify_query "page" director=cat.pk %}">{{ cat }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseActors">
+                    {% trans "Filter by Actor" %}
+                </a>
+            </h6>
+        </div>
+        <div id="collapseActors" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    <a class="list-group-item{% if not facets.selected.actor %} active{% endif %}" href="{% modify_query "actor" "page" %}">{% trans "All" %}</a>
+                    {% for cat in facets.categories.actors %}
+                        <a class="list-group-item{% if facets.selected.actor == cat %} active{% endif %}" href="{% modify_query "page" actor=cat.pk %}">{{ cat }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h6 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseRatings">
+                    {% trans "Filter by Rating" %}
+                </a>
+            </h6>
+        </div>
+        <div id="collapseRatings" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="list-group">
+                    <a class="list-group-item{% if not facets.selected.rating %} active{% endif %}" href="{% modify_query "rating" "page" %}">{% trans "All" %}</a>
+                    {% for r_val, r_display in facets.categories.ratings %}
+                        <a class="list-group-item{% if facets.selected.rating.0 == r_val %} active{% endif %}" href="{% modify_query "page" rating=r_val %}">{{ r_display }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="movie_list">
+    {% for movie in object_list %}
+        <div class="movie alert alert-info">
+            <p>{{ movie.title }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% if object_list.has_other_pages %}
+    <ul class="pagination">
+        {% if object_list.has_previous %}
+            <li><a href="{% modify_query page=object_list.previous_page_number %}">&laquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for page_number in object_list.paginator.page_range %}
+            {% if page_number == object_list.number %}
+                <li class="active">
+                    <span>{{ page_number }} <span class="sr-only">(current)</span></span>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% modify_query page=page_number %}">{{ page_number }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if object_list.has_next %}
+            <li><a href="{% modify_query page=object_list.next_page_number %}">&raquo;</a></li>
+        {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+{% endif %}
+
+{% endblock %}

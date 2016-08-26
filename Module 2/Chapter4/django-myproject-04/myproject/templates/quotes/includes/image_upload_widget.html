@@ -1,0 +1,15 @@
+{% load i18n %}
+<div id="image_upload_widget">
+    <div class="preview">
+        {% if instance.picture %}
+            <img src="{{ instance.picture.url }}" alt="" />
+        {% endif %}
+    </div>
+    <div class="uploader">
+        <noscript>
+            <p>{% trans "Please enable JavaScript to use file uploader." %}</p>
+        </noscript>
+    </div>
+    <p class="help_text" class="help-block">{% trans "Available formats are JPG, GIF, and PNG." %}</p>
+    <div class="messages"></div>
+</div>

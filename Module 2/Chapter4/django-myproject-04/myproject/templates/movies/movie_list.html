@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n utility_tags %}
+
+{% block content %}
+    <h2>{% trans "Top Movies" %}</h2>
+    <div class="object_list">
+        {% for movie in object_list %}
+            <div class="item">
+                <p>{{ movie.rank }}.
+                    <strong>{{ movie.title }}</strong>
+                    ({{ movie.year }})
+                    <span class="badge">{% trans "IMDB rating" %}: {{ movie.rating }}</span>
+                </p>
+            </div>
+        {% endfor %}
+        {% if object_list.has_next %}
+            <p class="pagination"><a class="next_page" href="{% modify_query page=object_list.next_page_number %}">{% trans "More…" %}</a></p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block extrabody %}
+    <script src="{{ STATIC_URL }}site/js/jquery.jscroll.min.js"></script>
+    <script src="{{ STATIC_URL }}site/js/list.js"></script>
+{% endblock %}

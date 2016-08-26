@@ -1,0 +1,10 @@
+Pillow
+Django==1.8.5
+django-crispy-forms
+xlrd
+requests
+git+git://github.com/django-tastypie/django-tastypie.git
+
+djangorestframework
+markdown
+django-filter

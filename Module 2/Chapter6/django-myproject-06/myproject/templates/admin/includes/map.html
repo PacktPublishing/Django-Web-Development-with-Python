@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="form-row">
+    <div id="map_canvas">
+        <!-- THE GMAPS WILL BE INSERTED HERE DYNAMICALLY -->
+    </div>
+    <ul id="map_locations"></ul>
+    <div class="buttonHolder">
+        <button id="locate_address" type="button" class="secondaryAction">{% trans "Locate address" %}</button>
+        <button id="remove_geo" type="button" class="secondaryAction">{% trans "Remove from map" %}</button>
+    </div>
+</div>

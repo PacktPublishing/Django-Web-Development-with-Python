@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Chapter 07
+{% endblock %}
+{% block h1 %}
+    {{ bloc.super }}Chapter 07
+{% endblock %}
+{% block article_content %}
+    <a href="{% url "create_developer" %}">Create developer</a><br />
+    <a href="{% url "create_supervisor" %}">Create supervisor</a><br />
+    <a href="{% url "create_project" %}">Create project</a><br />
+{% endblock %}

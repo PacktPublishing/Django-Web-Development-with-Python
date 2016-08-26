@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title_html %}
+	Tasks list
+{% endblock %}
+{% block article_content %}
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th colspan="2"><a href="{% url "create_task" %}">Create</a></th>
+		</tr>
+		{% if last_task %} 
+			<!-- This line checks to see if we have a record in the last_task variable. If this variable has kept the value 0, the condition will not be validated. In this way, the last accessed task will display at the beginning of the list.-->
+			<tr class="important">
+				<td><a href="{% url "task_detail" last_task.id %}">{{ last_task.title }}</a></td>
+				<td>{{ last_task.description|truncatechars:25 }}</td>
+				<td><a href="{% url "update_task" last_task.id %}">Edit</a></td>
+				<td><a href="{% url "task_delete" last_task.id %}">Delete</a></td>
+			</tr>
+		{% endif %}
+		{% for task in tasks_list %}
+			<!-- This line runs through the rest of the tasks and displays. -->
+			<tr>
+				<td><a href="{% url "task_detail" task.id %}">{{ task.title }}</a></td>
+				<td>{{ task.description|truncatechars:25 }}</td>
+				<td><a href="{% url "update_task" task.id %}">Edit</a></td>
+				<td><a href="{% url "task_delete" task.id %}">Delete</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+{% endblock %}

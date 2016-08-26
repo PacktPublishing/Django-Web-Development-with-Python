@@ -1,0 +1,4 @@
+{% load i18n %}
+<p><img src="{{ location.small_image.url }}" alt="{{ location.title|escape }}" /></p>
+
+<p class="clearfix"><a href="{% url "location_detail" slug=location.slug %}" class="btn btn-default pull-right">{% trans "More" %} <span class="glyphicon glyphicon-chevron-right"></span></a></p>

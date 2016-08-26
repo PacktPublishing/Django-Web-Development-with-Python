@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block article_content %}
+    {% if user.is_authenticated %}
+        <!-- This line checks if the user is connected.-->
+        <h1>You are connected.</h1>
+        <p>
+            Your email : {{ user.email }}
+            <!-- In this line, if the user is connected, this line will display his e-mail address.-->
+        </p>
+    {% else %}
+        <!-- In this line, if the user is not connected, we display the login form.-->
+        <h1>Connexion</h1>
+        <form method="post" action="{{ public_connection }}">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" class="button" value="Connection" />
+        </form>
+    {% endif %}
+{% endblock %}

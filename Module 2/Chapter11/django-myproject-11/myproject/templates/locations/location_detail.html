@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load likes_tags %}
+
+{% block content %}
+    <div class="pull-right">
+        <br />
+        {% if request.user.is_authenticated %}
+            {% like_widget for location %}
+        {% endif %}
+    </div>
+
+    <h2>{{ location.title }}</h2>
+
+    <img class="img-full-width" src="{{ location.small_image.url }}"
+         data-small-src="{{ location.small_image.url }}"
+         data-medium-src="{{ location.medium_image.url }}"
+         data-large-src="{{ location.large_image.url }}"
+         alt="{{ location.title|escape }}"
+    />
+
+    <div id="map"
+         data-latitude="{{ location.latitude|stringformat:"f" }}"
+         data-longitude="{{ location.longitude|stringformat:"f" }}"
+    ></div>
+{% endblock %}
+
+{% block extrabody %}
+    <script type="text/javascript" src="https://maps-api-ssl.google.com/maps/api/js?v=3&amp;sensor=true"></script>
+    <script src="{{ STATIC_URL }}site/js/location_detail.js"></script>
+    <script src="{{ STATIC_URL }}site/js/likes.js"></script>
+{% endblock %}

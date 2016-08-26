@@ -1,0 +1,16 @@
+{% load i18n %}
+<div class="like-widget">
+    <button class="like-button btn btn-default {% if is_liked_by_user %} active{% endif %}"
+        data-href="{% url "json_set_like" content_type_id=content_type_id object_id=object.pk %}"
+        data-like-text="{% trans "Like" %}" data-unlike-text="{% trans "Unlike" %}"
+    >
+        {% if is_liked_by_user %}
+            <span class="glyphicon glyphicon-star"></span>
+            {% trans "Unlike" %}
+        {% else %}
+            <span class="glyphicon glyphicon-star-empty"></span>
+            {% trans "Like" %}
+        {% endif %}
+    </button>
+    <span class="like-badge badge">{{ count }}</span>
+</div>

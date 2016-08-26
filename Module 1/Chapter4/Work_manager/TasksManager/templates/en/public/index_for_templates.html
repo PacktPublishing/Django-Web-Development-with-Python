@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>
+            Hello World Title
+        </title>
+    </head>
+    <body>
+        <h1>
+            Hello World Django
+        </h1>
+        <article>
+            <span> {{my_var}} </span>
+            <br />
+            <span>
+              {% if years < 10 %}
+                You are a children
+              {% elif years < 18 %}
+                You are a teenager
+              {% else %}
+                You are an adult!
+              {% endif %}
+            </span>
+            <br />
+            <ul>
+              {% for city in array_city %}
+                <li>
+                  {{ city }}
+                </li>
+              {% endfor %}
+            </ul>
+            <br />
+            <span> {{ my_hello | lower }} </span>
+            <br />
+            <span> {{ my_hello | upper }} </span>
+            <br />
+            <span>{{ my_hello | capfirst }}</span>
+            <br />
+            You have {{ nb_products }} product{{ nb_products | pluralize }} in our cart.
+            <br />
+            I received {{ nb_diaries }} diar{{ nb_diaries|pluralize:"y,ies"}}.
+            <br />
+            <div>
+              {% autoescape on %}
+              <div>
+                <p>{{ variable1 }}</p>
+                <p>
+                  <span>
+                    {{ variable2|safe }}
+                  </span>
+                  {% endautoescape %}
+                  {% autoescape off %}
+                </p>
+              </div>
+                <span>{{ variable3 }}</span>
+                <span>{{ variable4|escape }}</span>
+              {% endautoescape %}
+              <span>{{ variable5 }}</span>
+            </div>
+            <br />
+            {{ text|truncatechars:14 }}
+            <br />
+            
+
+
+
+        </article>
+    </body>
+</html>

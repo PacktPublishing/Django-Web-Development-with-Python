@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Developer list
+{% endblock %}
+{% block h1 %}
+    Developer list
+{% endblock %}
+{% block article_content %}
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Login</td>
+            <td>Supervisor</td>
+        </tr>
+        {% for dev in object_list %}
+            <tr>
+                <!-- The following line display __str__ method of model. In this case it will display username of developer -->
+                <td><a href="">{{ dev }}</a></td>
+                <!-- The following line display the last_name of developer -->
+                <td>{{ dev.user_auth.last_name }}</td>
+                <!-- The following line display the __str__ method of Supervisor model. In this case it will display username of supervisor -->
+                <td>{{ dev.supervisor }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

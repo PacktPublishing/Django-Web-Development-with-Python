@@ -1,0 +1,10 @@
+{% extends "base_single_column.html" %}
+{% load i18n utility_tags crispy_forms_tags %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+    <h2>{% trans "Add Movie" %}</h2>
+    {% crispy form %}
+{% endblock %}

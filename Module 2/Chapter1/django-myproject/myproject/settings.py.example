@@ -1,0 +1,17 @@
+# -*- coding: UTF-8 -*-
+"""
+Sample Django settings for myproject project.
+"""
+from __future__ import unicode_literals
+
+from conf.devel import *
+
+DATABASES = {
+    'default': {
+        'ENGINE': '',
+        'NAME': '',
+        'HOST': '',
+        'USERNAME': '',
+        'PASSWORD': '',
+    }
+}

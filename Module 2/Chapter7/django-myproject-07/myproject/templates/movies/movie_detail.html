@@ -1,0 +1,9 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n utility_tags %}
+
+{% block content %}
+<div class="movie_detail">
+    <h2>{{ object.title }}</h2>
+    <h2>{{ object.description }}</h2>
+</div>
+{% endblock %}

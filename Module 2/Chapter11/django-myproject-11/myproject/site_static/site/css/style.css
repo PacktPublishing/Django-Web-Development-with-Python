@@ -1,0 +1,15 @@
+img.img-full-width {
+    width: 100%;
+}
+
+#map {
+    height: 300px;
+}
+
+.level-1 {
+    margin-left: 20px;
+}
+
+#footer {
+    height: 50px;
+}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title_html %}
+  Create Developer 
+{% endblock %}
+{% block h1 %}
+  Create Developer
+{% endblock %}
+{% block article_content %}
+  <form method="post" action="{% url "create_developer" %}" >
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>
+          <input type="text" name="name" />
+        </td>
+      </tr>
+      <tr>
+        <td>Login</td>
+        <td>
+          <input type="text" name="login" />
+        </td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td>
+          <input type="text" name="password" />
+        </td>
+      </tr>
+      <tr>
+        <td>Supervisor</td>
+        <td>
+          <select name="supervisor">
+            {% for supervisor in supervisors_list %}
+              <option value="{{ supervisor.id }}">{{ supervisor.name }}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" value="Valid" />
+          </td>
+      </tr>
+    </table>
+  </form>
+{% endblock %}

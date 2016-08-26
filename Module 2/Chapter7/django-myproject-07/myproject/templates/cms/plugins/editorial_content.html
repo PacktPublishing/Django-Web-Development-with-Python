@@ -1,0 +1,19 @@
+{% load i18n %}
+
+{% if editorial_content_template %}
+    {% include editorial_content_template %}
+{% else %}
+    <div class="item{% if object.css_class %} {{ object.css_class }}{% endif %}">
+        <!-- editorial content for non-specific placeholders -->
+        <div class="img">
+            {% if object.image %}
+                <img class="img-responsive" alt="{{ object.image_caption|striptags }}" src="{{ object.image.url }}" />
+            {% endif %}
+            {% if object.image_caption %}<p class="caption">{{ object.image_caption|removetags:"p"|truncatewords:30 }}</p>
+            {% endif %}
+        </div>
+        <h2><a href="{{ object.website }}">{{ object.title }}</a></h2>
+        <h3>{{ object.subtitle }}</h3>
+        <div class="description">{{ object.description|safe }}</div>
+    </div>
+{% endif %}

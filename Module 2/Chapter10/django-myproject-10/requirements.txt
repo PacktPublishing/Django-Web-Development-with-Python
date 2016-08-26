@@ -1,0 +1,7 @@
+Django==1.8.1
+django-debug-toolbar==1.4
+fabric==1.9.0
+awesome-slugify
+django-mobile
+python-memcached
+bpython

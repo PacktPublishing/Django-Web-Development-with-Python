@@ -1,0 +1,17 @@
+{% extends "base_two_columns.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block sidebar %}
+    {% crispy form %}
+{% endblock %}
+
+{% block content %}
+    <div class="bulletin_list">
+        {% for bulletin in object_list %}
+            <div class="bulletin alert alert-info">
+                <p>{{ bulletin.title }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="{% url "bulletin_rss" %}?{{ request.META.QUERY_STRING }}">RSS Feed</a>
+{% endblock %}

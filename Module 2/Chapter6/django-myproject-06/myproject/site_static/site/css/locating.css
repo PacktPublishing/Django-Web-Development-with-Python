@@ -1,0 +1,24 @@
+#map_canvas {
+    width:722px;
+    height:300px;
+    margin-bottom: 8px;
+}
+#map_locations {
+    width:722px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 8px;
+}
+#map_locations li {
+    border-bottom: 1px solid #ccc;
+    list-style: none;
+}
+#map_locations li:first-child {
+    border-top: 1px solid #ccc;
+}
+.buttonHolder {
+    width:722px;
+}
+#remove_geo {
+    float: right;
+}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n crispy_forms_tags %}
+
+{% block stylesheet %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ STATIC_URL }}ajaxuploader/css/fileuploader.css" />
+{% endblock %}
+
+{% block content %}
+    {% crispy form %}
+{% endblock %}
+
+{% block extrabody %}
+    <script src="{{ STATIC_URL }}ajaxuploader/js/fileuploader.js"></script>
+    <script>
+        var translatable_file_uploader_options = {
+            template: '<div class="qq-upload-drop-area"><span>{% trans "Drop image here" %}</span></div>' +
+                '<div class="qq-uploader">' +
+                '<div class="qq-upload-button btn"><span class="glyphicon glyphicon-upload"></span>  {% trans "Upload Image" %}</div>' +
+                '&nbsp;<button class="btn btn-danger qq-delete-button"><span class="glyphicon glyphicon-trash"></span> {% trans "Delete" %}</button>' +
+                '<ul class="qq-upload-list"></ul>' +
+            '</div>',
+            // template for one item in file list
+            fileTemplate: '<li>' +
+                '<span class="qq-upload-file"></span>' +
+                '<span class="qq-upload-spinner"></span>' +
+                '<span class="qq-upload-size"></span>' +
+                '<a class="qq-upload-cancel" href="#">{% trans "Cancel" %}</a>' +
+                '<span class="qq-upload-failed-text">{% trans "Failed" %}</span>' +
+            '</li>',
+            messages: {
+                typeError: '{% trans "{file} has invalid extension. Only {extensions} are allowed." %}',
+                sizeError: '{% trans "{file} is too large, maximum file size is {sizeLimit}." %}',
+                minSizeError: '{% trans "{file} is too small, minimum file size is {minSizeLimit}." %}',
+                emptyError: '{% trans "{file} is empty, please select files again without it." %}',
+                filesLimitError: '{% trans "No more than {filesLimit} files are allowed to be uploaded." %}',
+                onLeave: '{% trans "The files are being uploaded, if you leave now the upload will be cancelled." %}'
+            }
+        };
+        var ajax_uploader_path = '{% url "ajax_uploader" %}';
+    </script>
+    <script src="{{ STATIC_URL }}site/js/change_quote.js"></script>
+{% endblock %}

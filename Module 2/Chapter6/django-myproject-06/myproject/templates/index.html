@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n utility_tags %}
+
+{% block content %}
+    <h2>days_since</h2>
+    {% if request.user.is_authenticated %}
+        <p>{% trans "You joined:" %} {{ request.user.date_joined|days_since }}</p>
+    {% endif %}
+    <p>{% trans "Object created:" %} {{ object.created|days_since }}</p>
+
+    <h2>get_first_media</h2>
+    <div>{{ object.content|get_first_media }}</div>
+    <div>{{ object.content|striptags|truncatewords:"20" }}</div>
+
+    <h2>humanize_url</h2>
+    <p><a href="{{ object.website }}">{{ object.website|humanize_url:30 }}</a></p>
+
+    <h2>try_to_include</h2>
+    {% with included_template="utils/item.html" %}
+        {% try_to_include included_template %}
+    {% endwith %}
+    {% try_to_include "doesnotexist.html" %}
+
+    <h2>get_objects</h2>
+    {% get_objects all from contenttypes.ContentType as contenttypes %}
+    <ul>
+    {% for ct in contenttypes %}
+        <li>{{ ct }}</li>
+    {% endfor %}
+    </ul>
+    {% get_objects doesntexist from contenttypes.ContentType limit 5 as contenttypes %}
+    {{ contenttypes|pprint|escape }}
+
+    <h2>parse</h2>
+    {% parse "{{ STATIC_URL }}css/" as css_url %}
+    <p>{{ css_url }}</p>
+
+    <div>{% parse object.content_to_parse %}</div>
+
+    <h2>append_to_query</h2>
+    <ul>
+        <li><a href="{% append_to_query a=1 %}">a=1</a></li>
+        <li><a href="{% append_to_query b="ok" %}">b="ok"</a></li>
+        <li><a href="{% append_to_query a="" %}">reset a</a></li>
+        <li><a href="{% append_to_query a="" b=5 c="ok" %}">reset a and b=5 and c="ok"</a></li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base_single_column.html" %}
+{% load i18n utility_tags mptt_tags %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+<ul class="root">
+    {% recursetree categories %}
+        <li>
+            {{ node.title }}
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>
+      {% block title_html %}{% endblock %}
+    </title>
+    {% load staticfiles %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>
+      Tasks Manager - {% block h1 %}{% endblock %}
+    </h1>
+    <article>
+      {% block article_content %}{% endblock %}
+    </article>
+  </body>
+</html>

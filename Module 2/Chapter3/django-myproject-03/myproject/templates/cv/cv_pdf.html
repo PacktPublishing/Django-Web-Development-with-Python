@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>My Title</title>
+        <style type="text/css">
+            @page {
+                size: "A4";
+                margin: 2.5cm 1.5cm 2.5cm 1.5cm;
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0cm;
+                    margin-left: 0cm;
+                    margin-right: 0cm;
+                    height: 1cm;
+                }
+            }
+            #footerContent {
+                color: #666;
+                font-size: 10pt;
+                text-align: center;
+            }
+            body {
+                margin: 0;
+                font: 10pt Arial, sans-serif;
+                line-height: 150%;
+            }
+            p {
+                font-weight: normal;
+                font-size: 10pt;
+            }
+            h1 {
+                font-size: 16pt;
+                line-height: 100%;
+                font-weight: bold;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+                margin-bottom: 16pt;
+            }
+            h2 {
+                font-size: 16pt;
+                line-height: 100%;
+                font-weight: bold;
+                padding: 0;
+                margin: 0;
+                margin-bottom: 16pt;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            tr {
+                padding-bottom: 5pt;
+            }
+            td {
+                margin-bottom: 5pt;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Curriculum Vitae</h1>
+            <table>
+                <tr>
+                    <td><p><b>{{ cv.first_name }} {{ cv.last_name }}</b><br />
+                        Contact: {{ cv.email }}</p>
+                    </td>
+                    <td align="right">
+                        <img src="{{ STATIC_ROOT }}/site/img/smiley.jpg" width="100" height="100" />
+                    </td>
+                </tr>
+            </table>
+
+            <h2>Experience</h2>
+            <table>
+                {% for experience in cv.experience_set.all %}
+                    <tr>
+                        <td valign="top"><p>{{ experience.from_date|date:"F Y" }} -
+                            {% if experience.till_date %}
+                                {{ experience.till_date|date:"F Y" }}
+                            {% else %}
+                                present
+                            {% endif %}<br />
+                            {{ experience.position }} at {{ experience.company }}</p>
+                        </td>
+                        <td valign="top"><p><b>Skills gained</b><br>
+                            {{ experience.skills|linebreaksbr }}
+                            <br>
+                            <br>
+                            </p>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <pdf:nextpage>
+        <div>
+            This is an empty page to make a paper plane.
+        </div>
+        <div id="footerContent">
+            Document generated at {% now "Y-m-d" %} |
+            Page <pdf:pagenumber> of <pdf:pagecount>
+        </div>
+    </body>
+</html>

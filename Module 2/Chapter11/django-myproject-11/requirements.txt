@@ -1,0 +1,12 @@
+Django==1.8.5
+django-crispy-forms
+requests
+
+djangorestframework
+markdown
+django-filter
+
+selenium
+mock
+
+cookiecutter

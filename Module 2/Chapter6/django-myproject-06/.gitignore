@@ -1,0 +1,5 @@
+*.pyc
+/myproject/local_settings.py
+/myproject/static/
+/myproject/tmp/
+/myproject/media/

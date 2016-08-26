@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Create Project
+{% endblock %}
+{% block h1 %}
+    Create Project
+{% endblock %}
+{% block article_content %}
+    <form method="post" action="{% url "create_project" %}" >
+        {% csrf_token %} 
+        <!-- This line inserts a CSRF token. -->
+        <table>
+            {{ form.as_table }}
+            <!-- This line displays lines of the form. -->
+        </table>
+        <p><input type="submit" value="Create" /></p>
+    </form>
+{% endblock %}

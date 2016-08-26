@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title_html %}
+    Update a {{ model_name }} 
+    <!-- In this line, we show the type of model we want to change here. -->
+{% endblock %}
+{% block h1 %}
+    Update a {{ model_name }} 
+{% endblock %}
+{% block article_content %}
+    <form method="post" action="{% url url_name object.id %}"> <!-- line 2 -->
+        <!-- In this line, we use our url_name property to redirect the form to the current page. -->
+        {% csrf_token %} 
+        <table>
+            {{ form.as_table }} 
+        </table>
+        <p><input type="submit" value="Update" /></p>
+    </form>
+{% endblock %}
