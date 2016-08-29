@@ -15,4 +15,4 @@ Django Web Development with Python by Packt Publishing
 *	Design and implement eye-catching and reusable UI components without compromising nativity in mobile applications
 
 ###Note
- Modules 1, 2, and 3 have code arranged by chapter (for the chapters that have code). [Click here]() if you have any feedback or suggestions.
+ Modules 1, 2, and 3 have code arranged by chapter (for the chapters that have code). [Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
