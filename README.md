@@ -1,4 +1,4 @@
-# Django-Web-Development-with-Python
+# Django Web Development with Python
 Django Web Development with Python by Packt
 
 
