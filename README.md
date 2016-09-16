@@ -28,7 +28,7 @@ You will see code something similar to the following:
     execute_from_command_line(sys.argv) 
 ```
 
-###Related **Djgango** Products:
+###Related **Django** Products:
 [Web Development with Django Cookbook](https://www.packtpub.com/web-development/web-development-django-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781783286898)
 
 [Django 1.0 Website Development](https://www.packtpub.com/web-development/django-10-website-development?utm_source=github&utm_medium=repository&utm_campaign=9781847196781)
