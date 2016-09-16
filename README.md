@@ -1,5 +1,5 @@
-# Django Web Development with Python
-Django Web Development with Python by Packt
+# Django: Web Development with Python
+Django: Web Development with Python by Packt
 
 
 ##What You Will Learn:
