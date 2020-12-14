@@ -1,4 +1,4 @@
-Django==1.8.1
+Django==1.11.29
 django-crispy-forms
 django-mptt
 django-mptt-admin
