@@ -1,5 +1,5 @@
 Django==1.8.1
-django-debug-toolbar==1.4
+django-debug-toolbar==1.11.1
 fabric==1.9.0
 awesome-slugify
 django-mobile
